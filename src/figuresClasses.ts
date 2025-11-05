@@ -12,13 +12,13 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('your error message');
+      throw new Error('All triangle sides must be positive numbers');
     }
 
     const sides = [a, b, c].sort((x, y) => y - x);
 
     if (sides[0] >= sides[1] + sides[2]) {
-      throw new Error('your error message');
+      throw new Error('The provided sides do not form a valid triangle');
     }
   }
 
@@ -34,7 +34,7 @@ export class Triangle implements Figure {
         (parameter - this.c),
     );
 
-    return Math.round(triangleArea * 100) / 100;
+    return Math.floor(triangleArea * 100) / 100;
   }
 }
 
@@ -44,7 +44,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('Circle radius must be a positive number');
     }
   }
 
@@ -58,19 +58,13 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  color: string;
-
-  width: number;
-
-  height: number;
-
-  constructor(color: string, width: number, height: number) {
-    this.color = color;
-    this.width = width;
-    this.height = height;
-
+  constructor(
+    public color: string,
+    public width: number,
+    public height: number,
+  ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('your error message');
+      throw new Error('Rectangle width and height must be positive numbers');
     }
   }
 
